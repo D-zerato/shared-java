@@ -243,22 +243,12 @@ public class QueryDslUtils {
         return target.in(Arrays.asList(values));
     }
 
-    public static BooleanExpression notInIfNotNull(EnumPath target, List<Enum> values) {
-        //
-        if (CollectionUtils.isEmpty(values)) {
-            return null;
-        }
-
-        return target.notIn(values);
+    public static <T extends Enum<T>> BooleanExpression inIfNotNull(EnumPath<T> target, List<T> values) {
+        return CollectionUtils.isEmpty(values) ? null : target.in(values);
     }
 
-    public static BooleanExpression inIfNotNull(EnumPath target, List<Enum> values) {
-        //
-        if (CollectionUtils.isEmpty(values)) {
-            return null;
-        }
-
-        return target.in(values);
+    public static <T extends Enum<T>> BooleanExpression notInIfNotNull(EnumPath<T> target, List<T> values) {
+        return CollectionUtils.isEmpty(values) ? null : target.notIn(values);
     }
 
     public static BooleanExpression gtIfNotNull(NumberPath target, Integer value) {
