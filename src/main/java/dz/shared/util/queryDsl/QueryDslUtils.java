@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class QuerydslUtils {
+public class QueryDslUtils {
     //
     public static BooleanExpression eqIfNotNull(StringPath target, String value) {
         //
